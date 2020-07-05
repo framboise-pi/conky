@@ -11,6 +11,7 @@ conky.config = {
 	own_window_transparent= true,
 	own_window_hints= 'undecorated,below,sticky,skip_taskbar,skip_pager',
 
+
 	double_buffer= true,
 
 	minimum_width= 270,
@@ -31,7 +32,6 @@ conky.config = {
 	color3 = '616161',
 	color4 = '6fde00',--vert light
 	color5 = 'f67bff',--violet light
-	color6 = 'ffff7a',--jaune light
 
 	alignment= 'top_right',
 	gap_x= 56,
@@ -43,7 +43,7 @@ conky.config = {
 	net_avg_samples = 2,
 	override_utf8_locale= true,
 
-	font= 'Montserrat Regular:style=medium:size=8'
+	font= 'Ubuntu:style=medium:size=8'
 }
 
 conky.text = [[
@@ -59,16 +59,16 @@ ${voffset 2}
 
 ${color grey}Info:${color} ${scroll 64 Conky $conky_version - $sysname - $nodename - $kernel - $machine - $uptime}
 ${hr}
-${font FontAwesome:style=Solid:size=10}ï„©${font} ${alignr}${if_match "${addr eth0}"!="No Address"} ETHERNET ${addr eth0}${endif}${if_match "${addr wlan0}"!="No Address"}[WIFI] ${addr wlan0}${endif}
+${font FontAwesome:style=Solid:size=10}${font} ${alignr}${if_match "${addr eth0}"!="No Address"} ETHERNET ${addr eth0}${endif}${if_match "${addr wlan0}"!="No Address"}[WIFI] ${addr wlan0}${endif}
 ${hr}
-${color4}${font FontAwesome:style=Solid:size=10}ï‚¬${font}${color} ${alignr}${execi 86400 curl ipinfo.io/ip}
-${color6}MEMOIRE VIVE${hr}
+${color4}${font FontAwesome:style=Solid:size=10}${font}${color} ${alignr}${execi 86400 curl ipinfo.io/ip}
+${hr}
 #${color grey}Uptime:$color $uptime
 #${color grey}Frequency (in GHz):$color $freq_g
 ${color grey}RAM Usage:$color $mem / $memmax - $memperc% ${membar 4}
 ${color grey}Swap Usage:$color $swap / $swapmax - $swapperc% ${swapbar 4}
-${color4}${font FontAwesome:style=Solid:size=10}ï‡€${font}${color6} ESPACE DISQUE${hr}
-${color}${fs_used /}/${fs_size /} ${fs_bar 6 /}
+${hr}
+${color4}${font FontAwesome:style=Solid:size=10}${font} ${color}${fs_used /}/${fs_size /} ${fs_bar 6 /}
 $hr
 ${color grey}Processes:$color $processes  ${color grey}Running:$color $running_processes
 ${color grey}Name              ${alignr} PID     CPU%   MEM%
@@ -77,21 +77,22 @@ ${color lightgrey} ${top name 2}${alignr} ${top pid 2} ${top cpu 2} ${top mem 2}
 ${color lightgrey} ${top name 3}${alignr} ${top pid 3} ${top cpu 3} ${top mem 3}
 ${color lightgrey} ${top name 4}${alignr} ${top pid 4} ${top cpu 4} ${top mem 4}
 ${color lightgrey} ${top name 5}${alignr} ${top pid 5} ${top cpu 5} ${top mem 5}
-${color5}${font FontAwesome:style=Solid:size=10}ï€Š${font}${color6} PROCESSEURS${hr}
-${color grey}${font FontAwesome:style=Solid:size=10}ïˆž${font} Frequency :${color5} $freq Mhz
+${color}${hr}
+${color5}${font FontAwesome:style=Solid:size=10}${font}${color grey} COEURS ${alignr}
+${color grey}${font FontAwesome:style=Solid:size=10}${font} Frequency :${color5} $freq Mhz
 ${color5}1: ${color grey}${cpubar cpu1 10,120 5e7b7b d8deeb -t}${color5} 2: ${color grey}${cpubar cpu2 10,120 5e7b7b d8deeb -t}
 ${color5}3: ${color grey}${cpubar cpu3 10,120 5e7b7b d8deeb -t}${color5} 4: ${color grey}${cpubar cpu4 10,120 5e7b7b d8deeb -t}${color}
 ${color grey}CPU Usage:${color5} $cpu% ${cpubar 4}
-${color6}${hr}
+${color}${hr}
 ${if_match "${addr eth0}"!="No Address"}
-${color3}${downspeedgraph eth0 30,120 AAFF55 0A7503} ${alignr}${color3}${upspeedgraph eth0 30,120 DD3A21 980000}
-${color4}${font FontAwesome:style=Solid:size=10}ï€™${font}${color} ${downspeedf eth0}k/s (${totaldown eth0})${alignr}${color2}${font FontAwesome:style=Solid:size=10}ï‚“${font}${color} ${alignr}${upspeedf eth0}k/s (${totalup eth0})
+${color3}${downspeedgraph eth0 30,120 AAFF55 32E31A} ${alignr}${color3}${upspeedgraph eth0 30,120 FFFF00 DD3A21}
+${color4}${font FontAwesome:style=Solid:size=10}${font}${color} ${downspeedf eth0}k/s (${totaldown eth0})${alignr}${color2}${font FontAwesome:style=Solid:size=10}${font}${color} ${alignr}${upspeedf eth0}k/s (${totalup eth0})
 ${endif}
 ${if_match "${addr wlan0}"!="No Address"}
 ${color3}${downspeedgraph wlan0 50,240 5e7b7b d8deeb} ${color3}${upspeedgraph wlan0 50,240 99c8e8 618094}
-${color1}${font FontAwesome:style=Solid:size=10}ï€™${font}   download ${alignr}${downspeedf wlan0}k/s (${totaldown wlan0})
+${color1}${font FontAwesome:style=Solid:size=10}${font}   download ${alignr}${downspeedf wlan0}k/s (${totaldown wlan0})
 ${hr}
-${font FontAwesome:style=Solid:size=10}ï‚“${font}   upload ${alignr}${upspeedf wlan0}k/s (${totalup wlan0})
+${font FontAwesome:style=Solid:size=10}${font}   upload ${alignr}${upspeedf wlan0}k/s (${totalup wlan0})
 ${endif}
 ${hr}
 ${font Ubuntu:normal:size=6}${color1}Port(s)${alignr}#Connections${color}
